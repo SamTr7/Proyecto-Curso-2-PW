@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<a class="btn btn-warning" href="{% url 'index' %}">Regresar</a>
+<h1>Detalle del Carro</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Año</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Imagen</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">{{ carro.id }}</th>
+            <td>{{ carro.marca }}</td>
+            <td>{{ carro.modelo }}</td>
+            <td>{{ carro.año }}</td>
+            <td>${{ carro.precio }}</td>
+            <td>
+                {% if carro.imagen %}
+                    <img src="{{ carro.imagen.url }}" alt="{{ carro.marca }} {{ carro.modelo }}" style="max-width:150px;">
+                {% else %}
+                    <p><em>Sin imagen</em></p>
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock content %}
